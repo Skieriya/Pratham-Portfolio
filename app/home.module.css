@@ -1,0 +1,201 @@
+/* Main Container */
+.mainContainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    overflow: hidden;
+    pointer-events: none;
+    /* Allow clicks to pass through to Spline */
+}
+
+/* Utilities for interaction */
+.interactive {
+    pointer-events: auto;
+    /* Re-enable clicks for specific elements */
+}
+
+.splineContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* Fallback */
+    height: 100dvh;
+    /* Mobile optimized */
+    z-index: 1;
+    /* Behind text but visible */
+}
+
+/* Loading Overlay */
+.loaderOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--background);
+    z-index: 50;
+    /* Above everything while loading */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #000;
+    border-radius: 50%;
+    animation: spinLoader 1s linear infinite;
+}
+
+@keyframes spinLoader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Top Left Text: Cybersecurity Poet */
+.topLeftText {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    color: black;
+    font-size: 1.8em;
+    font-weight: bold;
+    font-family: 'CaniculeDisplay', sans-serif;
+    pointer-events: none;
+    /* Let clicks pass through if needed, or keep auto */
+}
+
+.starIcon {
+    display: inline-block;
+    width: 40px;
+    height: auto;
+    vertical-align: middle;
+}
+
+/* Top Right Text: Sorridi... */
+.topRightText {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    color: black;
+    font-size: 2em;
+    font-weight: bold;
+    font-family: 'CaniculeDisplay', sans-serif;
+    text-align: right;
+    pointer-events: none;
+}
+
+/* Center Projects Button */
+.projectsContainer {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    color: black;
+    font-size: 2em;
+    font-weight: bold;
+    font-family: 'CaniculeDisplay', sans-serif;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 30px;
+    width: 200px;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+    /* Slight background for readability */
+    backdrop-filter: blur(5px);
+}
+
+.projectsContainer:hover {
+    transform: translateX(-50%) scale(1.1);
+}
+
+.projectStar {
+    display: inline-block;
+    margin: 0 5px;
+    width: 60px;
+    height: auto;
+    vertical-align: middle;
+}
+
+/* DRA Image (Commented out in original but keeping style just in case) */
+.draImage {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 2;
+    max-width: 200px;
+    height: auto;
+    border-radius: 50%;
+    filter: drop-shadow(0px 0px 100px rgba(253, 101, 0, 0.5));
+    transition: transform 0.2s ease-out;
+    cursor: pointer;
+}
+
+.draImage:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.draImage:active {
+    transform: translate(-50%, -50%) scale(0.95);
+    filter: drop-shadow(0px 0px 50px rgba(253, 101, 0, 0.8));
+}
+
+@keyframes spin {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .topLeftText {
+        font-size: 1.2em;
+        top: 15px;
+        left: 15px;
+        max-width: 40%;
+    }
+
+    .starIcon {
+        width: 25px;
+    }
+
+    .topRightText {
+        font-size: 1.4em;
+        top: 15px;
+        right: 15px;
+    }
+
+    .projectsContainer {
+        top: auto;
+        bottom: 40px;
+        /* Move to bottom on mobile for better reachability */
+        font-size: 1.5em;
+        width: 160px;
+        background: rgba(255, 255, 255, 0.6);
+        /* More visible bg on mobile */
+    }
+
+    .projectStar {
+        width: 40px;
+    }
+}
